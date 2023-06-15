@@ -41,10 +41,15 @@ class StartTask extends Command
         }
 
         // reqest to cerebro
-        $client = new Client();
-        $request = new Request('POST', 'https://cerebro.icrewsystems.com/api/v1/task/?email=abbas.r@icrewsystems.com&password=XXXXXXXXX&electron=0&task='.$taskNumber);
-        $res = $client->sendAsync($request)->wait();
-        $response = json_decode($res->getBody(), true);
+        // $client = new Client();
+        // $request = new Request('POST', 'https://cerebro.icrewsystems.com/api/v1/task/?email=abbas.r@icrewsystems.com&password=XXXXXXXXX&electron=0&task='.$taskNumber);
+        // $res = $client->sendAsync($request)->wait();
+        // $response = json_decode($res->getBody(), true);
+
+        $response = [
+            'status' => 'success',
+            'branch_name' => 'task-'.$taskNumber
+        ];
         
         if($response['status'] == 'success'){
             $branchName = $response['branch_name'];
