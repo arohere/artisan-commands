@@ -34,8 +34,6 @@ class StartTask extends Command
         $email = config('CEREBRO_EMAIL');
         $password = config('CEREBRO_PASSWORD');
 
-        $this->info($email);
-        $this->info($password);
         if(!$email || !$password){
             $this->error('Please set CEREBRO_EMAIL and CEREBRO_PASSWORD in .env file');
             return;
@@ -61,7 +59,7 @@ class StartTask extends Command
         $users = json_decode($res->getBody(), true);
         
         for ($i = 0; $i < count($users); $i++) {
-            if ($users[$i]['email_encrypted8'] == base64_encode($email)) {
+            if ($users[$i]['email_encrypted'] == base64_encode($email)) {
                 $userId = $users[$i]['id'];
                 $username = $users[$i]['first_name'];
                 break;
