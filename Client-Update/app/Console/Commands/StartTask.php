@@ -29,8 +29,6 @@ class StartTask extends Command
     public function handle()
     {
         
-        config(['CEREBRO_EMAIL' => "abbas.r@icrewsystems.com"]);
-        config(['CEREBRO_PASSWORD' => 'abbas.r@1234']);
         $email = config('CEREBRO_EMAIL');
         $password = config('CEREBRO_PASSWORD');
 
@@ -65,7 +63,7 @@ class StartTask extends Command
                 break;
             }
         }
-        
+        // change
         $request = new Request('GET', 'https://cerebro.icrewsystems.com/api/v1/get-all-assigned-tasks?authenticated_user=' . $userId . '&token=' . $authtoken);
         $res = $client->sendAsync($request)->wait();
         $tasks = json_decode($res->getBody(), true);
